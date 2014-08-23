@@ -1,4 +1,5 @@
-#include "mruby.h"
+#include "BindVector3.hpp"
+
 #include "mruby/value.h"
 
 namespace {

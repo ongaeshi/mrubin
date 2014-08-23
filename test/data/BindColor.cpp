@@ -1,4 +1,5 @@
-#include "mruby.h"
+#include "BindColor.hpp"
+
 #include "mruby/value.h"
 
 namespace {

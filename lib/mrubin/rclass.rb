@@ -44,9 +44,40 @@ module Mrubin
       str
     end
 
+    def bind_class_name
+      "Bind#{@klass.to_s}"
+    end
+
+    def header_filename
+      "#{bind_class_name}.hpp"
+    end
+
+    def header_path
+      File.join File.dirname(@path), header_filename
+    end
+
+    def output_path
+      File.join File.dirname(@path), "#{bind_class_name}.cpp"
+    end
+
+    def to_header
+      <<EOF
+#pragma once
+
+#include "mruby.h"
+
+//----------------------------------------------------------
+class #{bind_class_name} {
+public:
+    static void Bind(mrb_state* mrb);
+};
+EOF
+    end
+
     def to_s
       <<EOF
-#include "mruby.h"
+#include "#{header_filename}"
+
 #include "mruby/value.h"
 
 namespace {
@@ -60,14 +91,6 @@ void #{bind_class_name}::Bind(mrb_state* mrb)
 #{define_methods}
 }
 EOF
-    end
-
-    def bind_class_name
-      "Bind#{@klass.to_s}"
-    end
-
-    def output_path
-      File.join File.dirname(@path), "#{bind_class_name}.cpp"
     end
   end
 end

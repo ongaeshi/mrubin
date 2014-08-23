@@ -1,4 +1,5 @@
-#include "mruby.h"
+#include "BindTouchPoint.hpp"
+
 #include "mruby/value.h"
 
 namespace {

@@ -33,6 +33,8 @@ module Mrubin
     def view(*args)
       args.each do |path|
         rclass = RClass.new(path)
+        puts "--- #{rclass.header_path} ---"
+        puts rclass.to_header
         puts "--- #{rclass.output_path} ---"
         puts rclass.to_s
       end
