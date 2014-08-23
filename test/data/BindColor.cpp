@@ -226,7 +226,7 @@ mrb_value inspect(mrb_state *mrb, mrb_value self)
 
 }
 
-void color_init(mrb_state* mrb)
+void BindColor::Bind(mrb_state* mrb)
 {
     struct RClass *cc = mrb_define_class(mrb, "Color", mrb->object_class);
 

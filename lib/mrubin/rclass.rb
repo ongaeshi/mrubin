@@ -3,8 +3,6 @@ require 'active_support'
 require 'active_support/core_ext'
 
 module Mrubin
-  DEFINE_SPAN = 20
-
   class RClass
     def initialize(path)
       @path = path
@@ -53,21 +51,27 @@ namespace {
 #{implement_methods}
 }
 
-void color_init(mrb_state* mrb)
+void #{bind_class_name}::Bind(mrb_state* mrb)
 {
-    struct RClass *cc = mrb_define_class(mrb, "Color", mrb->object_class);
+    struct RClass *cc = mrb_define_class(mrb, "#{@klass.to_s}", mrb->object_class);
 
 #{define_methods}
 }
 EOF
     end
 
+    def bind_class_name
+      "Bind#{@klass.to_s}"
+    end
+
     def output_path
-      File.join File.dirname(@path), "Bind#{@klass.to_s}.cpp"
+      File.join File.dirname(@path), "#{bind_class_name}.cpp"
     end
   end
 
   class RMethod
+    DEFINE_SPAN = 20
+
     def initialize(method)
       @method = method
     end
