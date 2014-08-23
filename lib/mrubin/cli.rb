@@ -26,7 +26,9 @@ module Mrubin
 
         # Generate a bind code
         rclass = RClass.new(klass)
-        puts rclass.to_s
+
+        output_path = File.join File.dirname(path), "Bind#{klass.to_s}.cpp"
+        File.write(output_path, rclass.to_s)
       end
     end
 
