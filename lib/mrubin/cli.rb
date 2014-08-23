@@ -1,6 +1,8 @@
 require 'mrubin/rclass'
 require 'mrubin/version'
 
+require 'active_support'
+require 'active_support/core_ext'
 require 'find'
 require 'thor'
 
@@ -19,8 +21,8 @@ module Mrubin
         # Load a Ruby script
         load path
 
-        # Get a klass
-        klass = ObjectSpace.each_object(Class).to_a.last
+        # Get klass from filename
+        klass = File.basename(path, ".mrubin").classify.constantize
 
         # Generate a bind code
         rclass = RClass.new(klass)
