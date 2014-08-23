@@ -15,15 +15,16 @@ module Mrubin
       # Get klass from filename
       @klass = File.basename(@path, ".mrubin").classify.constantize
 
-      # Collect methods
+      # Collect singleton methods
       @singleton_methods = @klass.singleton_methods(false).map do |sym|
         RMethod.new(@klass.method(sym))
       end
 
-      @instance_methods = []
-      # @instance_methods = @klass.instance_methods(false).map do |sym|
-      #   RMethod.new($sample_obj.method(sym))
-      # end
+      # Collect instance methods
+      obj = @klass.new
+      @instance_methods = @klass.instance_methods(false).map do |sym|
+        RMethod.new(obj.method(sym))
+      end
     end
 
     def implement_methods
