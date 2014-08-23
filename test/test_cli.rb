@@ -16,8 +16,8 @@ module Mrubin
       assert_match /mrubin \d+/, command("")
     end
 
-    def test_exec
-      command("exec #{testdir("./data")}")
+    def test_generate
+      command("generate #{testdir("./data")}")
     end
 
     private

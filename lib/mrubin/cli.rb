@@ -10,8 +10,8 @@ module Mrubin
   class CLI < Thor
     class_option :help, :type => :boolean, :aliases => '-h', :desc => 'Help message'
 
-    desc "exec", ""
-    def exec(*args)
+    desc "generate", ""
+    def generate(*args)
       dir = "."
       dir = args[0] if args.size > 0
 
@@ -28,7 +28,13 @@ module Mrubin
         rclass = RClass.new(klass)
 
         output_path = File.join File.dirname(path), "Bind#{klass.to_s}.cpp"
-        File.write(output_path, rclass.to_s)
+
+        if File.exists? output_path
+          puts "Already exists: #{output_path}"
+        else
+          puts "Generate: #{output_path}"
+          File.write(output_path, rclass.to_s)
+        end
       end
     end
 
