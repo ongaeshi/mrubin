@@ -18,14 +18,8 @@ module Mrubin
 
         rclass = RClass.new(path)
 
-        output_path = rclass.output_path
-
-        if File.exists? output_path
-          puts "Already exists: #{output_path}"
-        else
-          puts "Generate: #{output_path}"
-          File.write(output_path, rclass.to_s)
-        end
+        write_file rclass.header_path, rclass.to_header
+        write_file rclass.output_path, rclass.to_s
       end
     end
 
@@ -55,5 +49,17 @@ module Mrubin
         end
       end
     end
+
+    private
+
+    def write_file(path, content)
+      if File.exists? path
+        puts "Already exists: #{path}"
+      else
+        puts "Generate: #{path}"
+        File.write(path, content)
+      end
+    end
+    
   end
 end
