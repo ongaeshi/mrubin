@@ -52,7 +52,7 @@ vector3.mrubin
 Execute.
 
 ```
-$ mrubin
+$ mrubin exec
 ```
 
 Created `BindVector3.cpp`.

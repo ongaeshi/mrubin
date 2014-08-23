@@ -1,3 +1,4 @@
+require "mrubin/cli"
 require "mrubin/version"
 
 module Mrubin
