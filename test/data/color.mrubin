@@ -1,0 +1,97 @@
+class Color
+  attr_accessor :r
+  attr_accessor :g
+  attr_accessor :b
+  attr_accessor :a
+  
+  def initialize(r, g, b, a = 255)
+  end
+
+  def self.test!(a)
+  end
+
+  def clone
+  end
+
+  def self.hex(hex_color, alpha = 2)
+  end
+
+  def self.hsb(hue, saturation, brightness, alpha = 255)
+  end
+
+  def set(r, g, b, a = 255)
+  end
+
+  def set_hex(hex, alpha = 255)
+  end
+
+  def to_hex
+  end
+
+  def clamp
+  end
+
+  def invert
+  end
+    
+  def normalize
+  end
+    
+  def lerp(target, amount)
+  end
+    
+  def hue
+  end
+
+  def saturation
+  end
+
+  def brightness
+  end
+
+  def lightness
+  end
+
+  def to_hsb
+  end
+    
+  def hue=
+  end
+
+  def saturation=
+  end
+
+  def brightness=
+  end
+
+  def set_hsb(hue, saturation, brightness, alpha = 255)
+  end
+
+  def ==(color)
+  end
+
+  def !=(color)
+  end
+
+  def +(color)
+  end
+
+  def -(color)
+  end
+
+  def *(color)
+  end
+
+  def /(color)
+  end
+
+  def [](n)
+  end
+
+  def []=(n)
+  end
+
+  def inspect
+  end
+end
+

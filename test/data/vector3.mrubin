@@ -1,0 +1,26 @@
+class Vector3
+  attr_accessor :x
+  attr_accessor :y
+  attr_accessor :z
+  
+  def initialize(x, y, z)
+  end
+
+  def clone
+  end
+
+  def +(vec)
+  end
+
+  def *(scalar)
+  end
+
+  def ==(vec)
+  end
+
+  def[](index)
+  end
+
+  def inspect
+  end
+end
