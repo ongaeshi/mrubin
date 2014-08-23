@@ -1,5 +1,7 @@
-require "mrubin/rclass"
-require "mrubin/version"
+require 'mrubin/rclass'
+require 'mrubin/version'
+
+require 'find'
 require 'thor'
 
 module Mrubin
@@ -7,8 +9,14 @@ module Mrubin
     class_option :help, :type => :boolean, :aliases => '-h', :desc => 'Help message'
 
     desc "exec", ""
-    def exec
-      puts "exec"
+    def exec(*args)
+      dir = "."
+      dir = args[0] if args.size > 0
+
+      Find.find(dir) do |path|
+        next if File.extname(path) != ".mrubin"
+        puts "#{path}"
+      end
     end
 
     no_tasks do
