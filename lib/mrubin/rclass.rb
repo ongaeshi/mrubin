@@ -11,9 +11,10 @@ module Mrubin
         RMethod.new(@klass.method(sym))
       end
 
-      @instance_methods = @klass.instance_methods(false).map do |sym|
-        RMethod.new($sample_obj.method(sym))
-      end
+      @instance_methods = []
+      # @instance_methods = @klass.instance_methods(false).map do |sym|
+      #   RMethod.new($sample_obj.method(sym))
+      # end
     end
 
     def implement_methods

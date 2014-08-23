@@ -15,7 +15,16 @@ module Mrubin
 
       Find.find(dir) do |path|
         next if File.extname(path) != ".mrubin"
-        puts "#{path}"
+
+        # Load a Ruby script
+        load path
+
+        # Get a klass
+        klass = ObjectSpace.each_object(Class).to_a.last
+
+        # Generate a bind code
+        rclass = RClass.new(klass)
+        puts rclass.to_s
       end
     end
 
