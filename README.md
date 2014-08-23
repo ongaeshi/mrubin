@@ -41,8 +41,10 @@ class Vector3
 end
 ```
 
+Put a `.mrubin` files wherever you like.
+
 ```
-$ cd dir
+$ cd /path/to/dir
 $ ls
 vector3.mrubin
 ```
@@ -50,7 +52,12 @@ vector3.mrubin
 Execute.
 
 ```
-$ mrubin .
+$ mrubin
+```
+
+Created `BindVector3.cpp`.
+
+```
 $ ls
 BindVector3.cpp
 vector3.mrubin
@@ -58,7 +65,7 @@ vector3.mrubin
 
 BindVector3.cpp
 
-```
+```cpp
 #include "mruby.h"
 #include "mruby/value.h"
 
@@ -157,11 +164,3 @@ void vector3_init(mrb_state* mrb)
     mrb_define_method(mrb, cc,       "inspect"           , inspect             , MRB_ARGS_NONE());
 }
 ```
-
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/mrubin/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
