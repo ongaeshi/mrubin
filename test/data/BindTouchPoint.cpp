@@ -2,6 +2,29 @@
 #include "mruby/value.h"
 
 namespace {
+mrb_value x(mrb_state *mrb, mrb_value self)
+{
+    // return self;
+    return mrb_nil_value();
+}
+
+mrb_value y(mrb_state *mrb, mrb_value self)
+{
+    // return self;
+    return mrb_nil_value();
+}
+
+mrb_value valid?(mrb_state *mrb, mrb_value self)
+{
+    // return self;
+    return mrb_nil_value();
+}
+
+mrb_value inspect(mrb_state *mrb, mrb_value self)
+{
+    // return self;
+    return mrb_nil_value();
+}
 
 }
 
@@ -11,5 +34,8 @@ void color_init(mrb_state* mrb)
 
 
 
-
+    mrb_define_method(mrb, cc,       "x"                 , x                   , MRB_ARGS_NONE());
+    mrb_define_method(mrb, cc,       "y"                 , y                   , MRB_ARGS_NONE());
+    mrb_define_method(mrb, cc,       "valid?"            , valid?              , MRB_ARGS_NONE());
+    mrb_define_method(mrb, cc,       "inspect"           , inspect             , MRB_ARGS_NONE());
 }

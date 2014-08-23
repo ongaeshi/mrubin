@@ -3,8 +3,8 @@ class Vector3
   attr_accessor :y
   attr_accessor :z
   
-  def initialize(x, y, z)
-  end
+  # def initialize(x, y, z)
+  # end
 
   def clone
   end

@@ -3,10 +3,10 @@ class Color
   attr_accessor :g
   attr_accessor :b
   attr_accessor :a
-  
-  def initialize(r, g, b, a = 255)
-  end
 
+  # def initialize(r, g, b, a = 255)
+  # end
+  
   def self.test!(a)
   end
 
