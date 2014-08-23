@@ -21,7 +21,12 @@ module Mrubin
       end
 
       # Collect instance methods
-      obj = @klass.new
+      begin
+        obj = @klass.new
+      rescue ArgumentError => e
+        raise e, "Can't define #{@klass}#initialize."
+      end
+
       @instance_methods = @klass.instance_methods(false).map do |sym|
         RMethod.new(obj.method(sym))
       end
