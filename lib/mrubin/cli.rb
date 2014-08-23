@@ -18,8 +18,8 @@ module Mrubin
 
         rclass = RClass.new(path)
 
-        write_file rclass.header_path, rclass.to_header
-        write_file rclass.output_path, rclass.to_s
+        write_file rclass.header_path, rclass.header_content
+        write_file rclass.impl_path, rclass.impl_content
       end
     end
 
@@ -28,9 +28,9 @@ module Mrubin
       args.each do |path|
         rclass = RClass.new(path)
         puts "--- #{rclass.header_path} ---"
-        puts rclass.to_header
-        puts "--- #{rclass.output_path} ---"
-        puts rclass.to_s
+        puts rclass.header_content
+        puts "--- #{rclass.impl_path} ---"
+        puts rclass.impl_content
       end
     end
 

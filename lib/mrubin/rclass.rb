@@ -56,11 +56,11 @@ module Mrubin
       File.join File.dirname(@path), header_filename
     end
 
-    def output_path
+    def impl_path
       File.join File.dirname(@path), "#{bind_class_name}.cpp"
     end
 
-    def to_header
+    def header_content
       <<EOF
 #pragma once
 
@@ -74,7 +74,7 @@ public:
 EOF
     end
 
-    def to_s
+    def impl_content
       <<EOF
 #include "#{header_filename}"
 
