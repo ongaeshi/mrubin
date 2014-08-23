@@ -2,7 +2,7 @@ require 'minitest_helper'
 require 'mrubin/cli'
 
 module Mrubin
-  class TestCli < MiniTest::Test
+  class TestCli < MiniTest::Unit::TestCase
     def setup
       @orig_stdout = $stdout
       $stdout = @stringio = StringIO.new
