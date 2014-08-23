@@ -20,6 +20,10 @@ module Mrubin
       command("generate #{testdir("./data")}")
     end
 
+    def test_view
+      assert_match /BindTouchPoint/, command("view #{testdir("./data/touch_point.mrubin")}")
+    end
+
     private
 
     def testdir(path)

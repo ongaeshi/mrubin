@@ -1,8 +1,6 @@
 require 'mrubin/rclass'
 require 'mrubin/version'
 
-require 'active_support'
-require 'active_support/core_ext'
 require 'find'
 require 'thor'
 
@@ -18,16 +16,9 @@ module Mrubin
       Find.find(dir) do |path|
         next if File.extname(path) != ".mrubin"
 
-        # Load a Ruby script
-        load path
+        rclass = RClass.new(path)
 
-        # Get klass from filename
-        klass = File.basename(path, ".mrubin").classify.constantize
-
-        # Generate a bind code
-        rclass = RClass.new(klass)
-
-        output_path = File.join File.dirname(path), "Bind#{klass.to_s}.cpp"
+        output_path = rclass.output_path
 
         if File.exists? output_path
           puts "Already exists: #{output_path}"
@@ -35,6 +26,15 @@ module Mrubin
           puts "Generate: #{output_path}"
           File.write(output_path, rclass.to_s)
         end
+      end
+    end
+
+    desc "view", ""
+    def view(*args)
+      args.each do |path|
+        rclass = RClass.new(path)
+        puts "--- #{rclass.output_path} ---"
+        puts rclass.to_s
       end
     end
 

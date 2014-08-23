@@ -1,12 +1,21 @@
 # -*- coding: utf-8 -*-
+require 'active_support'
+require 'active_support/core_ext'
 
 module Mrubin
   DEFINE_SPAN = 20
 
   class RClass
-    def initialize(klass)
-      @klass = klass
+    def initialize(path)
+      @path = path
 
+      # Load a Ruby script
+      load @path
+
+      # Get klass from filename
+      @klass = File.basename(@path, ".mrubin").classify.constantize
+
+      # Collect methods
       @singleton_methods = @klass.singleton_methods(false).map do |sym|
         RMethod.new(@klass.method(sym))
       end
@@ -45,6 +54,10 @@ void color_init(mrb_state* mrb)
 #{define_methods}
 }
 EOF
+    end
+
+    def output_path
+      File.join File.dirname(@path), "Bind#{@klass.to_s}.cpp"
     end
   end
 
